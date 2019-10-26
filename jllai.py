@@ -2,9 +2,9 @@
 
 
 def general_narrative():
-    return building_name(Bldg_Name) + view(View) + "is located at " + Address + ", " + City \
-        + " " + State + " " + Zip + building_area(Business_Park, Market, Submarket) + "The property is a " \
-        + property_type(Property_Type, Bldg_Subtype)
+    return building_name(Bldg_Name) + view(View) + " located at " + Address + ", " + City \
+        + " " + State + " " + Zip + building_area(Business_Park, Market, Submarket) + "The property is " \
+        + property_type(Property_Type, Bldg_Subtype, Build_Year) + ", "
 
 def building_name(bldg_name):
     if bldg_name:
@@ -15,11 +15,11 @@ def building_name(bldg_name):
 def view(views):
     if views:
         if views == 'Water':
-            return " has a beautiful water-front view, "
+            return " has a beautiful water-front view and is "
         elif views == 'Skyline':
-            return " has an incredible skyline, and is "
+            return " has an incredible skyline and is "
         else:
-            return " is a park-side property, "
+            return " is a park-side property "
 
 def building_area(b_park, market, submarket):
     if b_park:
@@ -29,22 +29,34 @@ def building_area(b_park, market, submarket):
     else:
         return "."
 
-def property_type(prop_type, subtype):
-    if subtype:
-        return subtype + " " + prop_type
+def property_type(prop_type, subtype, b_date):
+    if b_date:
+            if b_date >= 2015:
+                if subtype != 'Office' or subtype != '':
+                    return "a modern " + subtype + " " + prop_type + " built in " + b_date + " "
+                else:
+                    return "a modern " + prop_type + " built in " + b_date + " "
+            else:
+                if subtype != 'Office' or subtype != '':
+                    return "a " + subtype + " " + prop_type + " built in " + b_date + " "
+                else:
+                    return "a " + prop_type + " built in " + b_date + " "
     else:
-        return prop_type + " "
+        if subtype != 'Office' or subtype != '':
+            return "a " + subtype + " " + prop_type + " "
+        else:
+            return "an " + prop_type + " "
 
 def subway(subway_distance):
     if subway_distance != 'More than 1 mile':
         return "Perfect for the daily commuter, with the Subway station located within 1 mile. "
 
 
-def build_date(b_date):
-    if b_date >= 2015:
-        return "modern building built in " + b_date
-    else:
-        return "built in " + b_date
+# def build_date(b_date):
+#     if b_date >= 2015:
+#         return "modern building built in " + b_date
+#     else:
+#         return "built in " + b_date
 
 def renovated_date(ren_date):
     if ren_date >= 2013:
