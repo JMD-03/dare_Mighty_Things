@@ -2,7 +2,9 @@
 
 
 def general_narrative():
-    return building_name(Bldg_Name) + view(View) + "is located at " + Address + ", " + City + " " + State + " " + Zip + building_area
+    return building_name(Bldg_Name) + view(View) + "is located at " + Address + ", " + City \
+        + " " + State + " " + Zip + building_area(Business_Park, Market, Submarket) + "The property is a " \
+        + property_type(Property_Type, Bldg_Subtype)
 
 def building_name(bldg_name):
     if bldg_name:
@@ -19,13 +21,19 @@ def view(views):
         else:
             return " is a park-side property, "
 
-def building_area(b_dist, market, submarket):
-    if b_dist:
-        return "in " + b_dist + ". "
+def building_area(b_park, market, submarket):
+    if b_park:
+        return "in " + b_park + ". "
     elif submarket:
         return "in the " + submarket + " " + market + " area. "
     else:
         return "."
+
+def property_type(prop_type, subtype):
+    if subtype:
+        return subtype + " " + prop_type
+    else:
+        return prop_type + " "
 
 def subway(subway_distance):
     if subway_distance != 'More than 1 mile':
