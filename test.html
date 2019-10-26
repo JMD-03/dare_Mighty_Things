@@ -1,48 +1,124 @@
 <script> 
-filePath = "PropertyDataSamples.csv"
-var result = null;
-var xmlhttp = new XMLHttpRequest();
-  xmlhttp.open("GET", filePath, false);
-  xmlhttp.send();
-  if (xmlhttp.status==200) {
-    result = xmlhttp.responseText;
-  }
+var cols;
+var listings;
+var properityEntries = Object();
 
-var lines = result.split('\n');
-var cols = lines[0].split(',');
+function getCSVdata() {
 
-var listings = Array();
-
-var i =0;
-var j = 0;
-
-for (i = 1; i < lines.length; i++)
-{
-    //splits the properites on the current line
-
-    var properties = lines[i].split(',');
-    var listing = Object();
-    for(j = 0; j < cols.length; j++)
-    {
-        listing[cols[j]] = properties[j];
+    filePath = "PropertyDataSamples.csv"
+    var result = null;
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("GET", filePath, false);
+    xmlhttp.send();
+    if (xmlhttp.status==200) {
+        result = xmlhttp.responseText;
     }
 
-    listings.push(listing);
+    var lines = result.split('\n');
+    cols = lines[0].split(',');
+
+
+
+    listings = Array();
+
+    var i =0;
+    var j = 0;
+
+    for (i = 1; i < lines.length; i++)
+    {
+        //splits the properites on the current line
+
+        var properties = lines[i].split(',');
+        var listing = Object();
+        for(j = 0; j < cols.length; j++)
+        {
+            listing[cols[j]] = properties[j];
+            if(properityEntries[cols[j]])
+            {
+                if(!properityEntries[cols[j]].includes(properties[j]))
+                {
+                    properityEntries[cols[j]].push(properties[j]);
+                }
+            }
+            else
+            {
+                properityEntries[cols[j]] = Array();
+                properityEntries[cols[j]].push(properties[j]);
+            }
+        }
+
+        listings.push(listing);
+    }
 }
 
-var stateSearch = "Illinois";
-
-var foundEntries = Array();
-//var listing = null;
-
-//i = 0;
-
-for(i = 0; i < listings.length; i++)
+function searchTest ()
 {
-    if(listings[i]["State"] == stateSearch)
+    var stateSearch = "Illinois";
+
+    var foundEntries = Array();
+    //var listing = null;
+
+    //i = 0;
+
+    for(i = 0; i < listings.length; i++)
     {
-        foundEntries.push(listings[i]);
+        if(listings[i]["State"] == stateSearch)
+        {
+            foundEntries.push(listings[i]);
+        }
     }
+}
+
+function onLoad ()
+{
+    getCSVdata();
+    generateSearch();
+}
+
+function generateSearch()
+{
+    var divOutputs ="";
+    var i = 0;
+
+    //console.log(cols);
+    //console.log(cols.lenght)
+
+    for (i = 0; i < cols.length; i++)
+    {
+        divOutputs += "<select id='" + cols[i] + "'>\n<option value='" + cols[i] + "'>" + cols[i] + "</option></select>\n" ;
+        console.log(cols[i]);
+    }
+
+    //console.log(divOutputs);
+
+    var j = 0;
+
+    document.getElementById("properties").innerHTML = divOutputs;
+    for(i = 0; i < cols.length; i++)
+    {
+        var options = document.getElementById(cols[i]).innerHTML;
+
+        for(j = 0; j < properityEntries[cols[i]].length; j++)
+        {
+            options += "<option value='" + properityEntries[cols[i]][j] + "'>" + properityEntries[cols[i]][j] + "</option>\n";
+        }
+        document.getElementById(cols[i]).innerHTML = options;
+    }
+
+
 }
 
     </script> 
+
+<body onload="onLoad()">
+
+<div id="properties">
+        <select>
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+                <option value="fiat">Fiat</option>
+                <option value="audi">Audi</option>
+              </select>
+</div>
+
+</body>
