@@ -1,153 +1,141 @@
-<script> 
-var cols;
-var listings;
-var properityEntries = Object();
+<!DOCTYPE html>
+<html lang="en">
 
-function getCSVdata() {
-
-    filePath = "PropertyDataSamples.csv"
-    var result = null;
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("GET", filePath, false);
-    xmlhttp.send();
-    if (xmlhttp.status==200) {
-        result = xmlhttp.responseText;
-    }
-
-    var lines = result.split('\n');
-    cols = lines[0].split(',');
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Property Search</title>
+</head>
 
 
 
-    listings = Array();
+<script>
+    var cols;
+    var listings;
+    var properityEntries = Object();
 
-    var i =0;
-    var j = 0;
-    var k = 0;
+    function getCSVdata() {
 
-    for (i = 1; i < lines.length; i++)
-    {
-        //checking for commas in quotes
-        for(k=0; k < lines[i].length; k++)
-        {
-            if(lines[i][k] == "\"")
-            {
-                //console.log(lines[i]);
-                k++;
-                while(lines[i][k] != "\"")
-                {
-                    
-                    if(lines[i][k] == ",")
-                    {
-                        //console.log(lines[i][k]);
-                        //lines[i][k] = 1;
-                        
+        filePath = "PropertyDataSamples.csv"
+        var result = null;
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.open("GET", filePath, false);
+        xmlhttp.send();
+        if (xmlhttp.status == 200) {
+            result = xmlhttp.responseText;
+        }
 
-                        lines[i] = lines[i].substr(0, k) + " " + lines[i].substr(k + 1);
+        var lines = result.split('\n');
+        cols = lines[0].split(',');
 
-                        //console.log(i + " " + k);
-                        //console.log(lines[i][k]);
-                    }
+
+
+        listings = Array();
+
+        var i = 0;
+        var j = 0;
+        var k = 0;
+
+        for (i = 1; i < lines.length; i++) {
+            //checking for commas in quotes
+            for (k = 0; k < lines[i].length; k++) {
+                if (lines[i][k] == "\"") {
+                    //console.log(lines[i]);
                     k++;
+                    while (lines[i][k] != "\"") {
+
+                        if (lines[i][k] == ",") {
+                            //console.log(lines[i][k]);
+                            //lines[i][k] = 1;
+
+
+                            lines[i] = lines[i].substr(0, k) + " " + lines[i].substr(k + 1);
+
+                            //console.log(i + " " + k);
+                            //console.log(lines[i][k]);
+                        }
+                        k++;
+                    }
                 }
             }
-        }
-        //splits the properites on the current line
+            //splits the properites on the current line
 
-        var properties = lines[i].split(',');
-        //var properties = lines[i].split(/([,]["].*[,].*["][,])/);
-        //var properites = Regex.Split(lines[i], /[,]["].*[,].*["][,]/, RegexOptions.IgnoreCase);
-        var listing = Object();
-        for(j = 0; j < cols.length; j++)
-        {
-            listing[cols[j]] = properties[j];
-            if(properityEntries[cols[j]])
-            {
-                if(!properityEntries[cols[j]].includes(properties[j]))
-                {
+            var properties = lines[i].split(',');
+            //var properties = lines[i].split(/([,]["].*[,].*["][,])/);
+            //var properites = Regex.Split(lines[i], /[,]["].*[,].*["][,]/, RegexOptions.IgnoreCase);
+            var listing = Object();
+            for (j = 0; j < cols.length; j++) {
+                listing[cols[j]] = properties[j];
+                if (properityEntries[cols[j]]) {
+                    if (!properityEntries[cols[j]].includes(properties[j])) {
+                        properityEntries[cols[j]].push(properties[j]);
+                    }
+                }
+                else {
+                    properityEntries[cols[j]] = Array();
+
                     properityEntries[cols[j]].push(properties[j]);
                 }
             }
-            else
-            {
-                properityEntries[cols[j]] = Array();
-                
-                properityEntries[cols[j]].push(properties[j]);
+
+            listings.push(listing);
+        }
+    }
+
+    function searchTest() {
+        var stateSearch = "Illinois";
+
+        var foundEntries = Array();
+        //var listing = null;
+
+        //i = 0;
+
+        for (i = 0; i < listings.length; i++) {
+            if (listings[i]["State"] == stateSearch) {
+                foundEntries.push(listings[i]);
             }
         }
-
-        listings.push(listing);
     }
-}
 
-function searchTest ()
-{
-    var stateSearch = "Illinois";
+    function onLoad() {
+        getCSVdata();
+        generateSearch();
+    }
 
-    var foundEntries = Array();
-    //var listing = null;
+    function generateSearch() {
+        var divOutputs = "";
+        var i = 0;
 
-    //i = 0;
+        //console.log(cols);
+        //console.log(cols.lenght)
 
-    for(i = 0; i < listings.length; i++)
-    {
-        if(listings[i]["State"] == stateSearch)
-        {
-            foundEntries.push(listings[i]);
+        for (i = 0; i < cols.length; i++) {
+            //  console.log(i);
+            let options = document.createElement("option");
+            options.value = cols[i];
+            options.innerHTML = cols[i];
+            document.getElementById("properties").appendChild(options);
+            // options += "<options value=cols[j]>cols[j]</options>" ;
+            // console.log(cols[i]);
         }
-    }
-}
-
-function onLoad ()
-{
-    getCSVdata();
-    generateSearch();
-}
-
-function generateSearch()
-{
-    var divOutputs ="";
-    var i = 0;
-
-    //console.log(cols);
-    //console.log(cols.lenght)
-
-    for (i = 0; i < cols.length; i++)
-    {
-        divOutputs += "<select id='" + cols[i] + "'>\n<option value='" + cols[i] + "'>" + cols[i] + "</option></select>\n" ;
-        console.log(cols[i]);
-    }
-
-    //console.log(divOutputs);
-
-    var j = 0;
-
-    document.getElementById("properties").innerHTML = divOutputs;
-    for(i = 0; i < cols.length; i++)
-    {
-        var options = document.getElementById(cols[i]).innerHTML;
-
-        for(j = 0; j < properityEntries[cols[i]].length; j++)
-        {
-            options += "<option value='" + properityEntries[cols[i]][j] + "'>" + properityEntries[cols[i]][j] + "</option>\n";
-        }
-        document.getElementById(cols[i]).innerHTML = options;
+        //console.log(divOutputs);
     }
 
 
-}
-
-    </script> 
+</script>
 
 <body onload="onLoad()">
 
-<div id="properties">
-        <select>
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="fiat">Fiat</option>
-                <option value="audi">Audi</option>
-              </select>
-</div>
+    <div>
+        <select id="properties">
+        </select>
+    </div>
+    <div>
+        <select id="elements">
+        </select>
+    </div>
 
 </body>
+
+</html>
