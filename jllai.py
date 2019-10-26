@@ -4,6 +4,7 @@
 def general_narrative():
     return building_name(Bldg_Name) + view(View) + " located at " + Address + ", " + City \
         + " " + State + " " + Zip + building_area(Business_Park, Market, Submarket) + subway(Subway_Service) \
+        + parking_ratio(Parking_Ratio, Parking_Type) \
         + "The property is " + property_type(Property_Type, Bldg_Subtype, Build_Year, Bldg_Class) + ", " \
         
 
@@ -57,7 +58,7 @@ def subway(subway_distance):
     if subway_distance != 'More than 1 mile':
         return "Perfect for the daily commuter, with the Subway station located within 1 mile. "
     else:
-        return"With the subway more then a mile away its a great way to get some exercise that you don't get in the office. "
+        return"With the subway more then a mile away, its a great way to get some exercise that you don't get in the office. "
 
 
 # def build_date(b_date):
@@ -92,16 +93,16 @@ def occ_rate(rate):
     elif rate <= 50:
         return "Building is sparcely occupied. "
 
-def parking_ration(p_ratio, p_type):
+def parking_ratio(p_ratio, p_type):
     if p_type == 'No Parking':
-        return "No Parking attached to Property. "
+        return "There is no parking attached to this property. "
     if p_ratio >= 2:
         if p_type == 'Structured Parking' or p_type == 'Underground Garage' or p_type == 'In-Building Above Grade':
-            return "Plenty of parking availble in a Parking Structure. "
+            return "There is plenty of parking availble in a Parking Structure. "
         else:
-            return "Plenty of parking available. "
+            return "There is plenty of parking available. "
     else:
-        return "Limited parking available. "
+        return "There is limited parking available. "
 
     
 
