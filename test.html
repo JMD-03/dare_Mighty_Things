@@ -71,7 +71,7 @@ function getCSVdata() {
             else
             {
                 properityEntries[cols[j]] = Array();
-                
+
                 properityEntries[cols[j]].push(properties[j]);
             }
         }
@@ -106,15 +106,16 @@ function onLoad ()
 
 function generateSearch()
 {
-    var divOutputs ="";
+    var options ="";
     var i = 0;
 
     //console.log(cols);
     //console.log(cols.lenght)
 
+    /* JACOB is fixing
     for (i = 0; i < cols.length; i++)
     {
-        divOutputs += "<select id='" + cols[i] + "'>\n<option value='" + cols[i] + "'>" + cols[i] + "</option></select>\n" ;
+        options += "<options value=cols[j]>cols[j]</options>" ;
         console.log(cols[i]);
     }
 
@@ -123,17 +124,7 @@ function generateSearch()
     var j = 0;
 
     document.getElementById("properties").innerHTML = divOutputs;
-    for(i = 0; i < cols.length; i++)
-    {
-        var options = document.getElementById(cols[i]).innerHTML;
-
-        for(j = 0; j < properityEntries[cols[i]].length; j++)
-        {
-            options += "<option value='" + properityEntries[cols[i]][j] + "'>" + properityEntries[cols[i]][j] + "</option>\n";
-        }
-        document.getElementById(cols[i]).innerHTML = options;
-    }
-
+    */
 
 }
 
@@ -141,8 +132,8 @@ function generateSearch()
 
 <body onload="onLoad()">
 
-<div id="properties">
-        <select>
+<div>
+        <select id="properties">
                 <option value="volvo">Volvo</option>
                 <option value="saab">Saab</option>
                 <option value="fiat">Fiat</option>
