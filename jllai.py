@@ -3,8 +3,9 @@
 
 def general_narrative():
     return building_name(Bldg_Name) + view(View) + " located at " + Address + ", " + City \
-        + " " + State + " " + Zip + building_area(Business_Park, Market, Submarket) + "The property is " \
-        + property_type(Property_Type, Bldg_Subtype, Build_Year, Bldg_Class) + ", "
+        + " " + State + " " + Zip + building_area(Business_Park, Market, Submarket) + subway(Subway_Service) \
+        + "The property is " + property_type(Property_Type, Bldg_Subtype, Build_Year, Bldg_Class) + ", " \
+        
 
 def building_name(bldg_name):
     if bldg_name:
@@ -55,6 +56,8 @@ def building_class(b_class):
 def subway(subway_distance):
     if subway_distance != 'More than 1 mile':
         return "Perfect for the daily commuter, with the Subway station located within 1 mile. "
+    else:
+        return"With the subway more then a mile away its a great way to get some exercise that you don't get in the office. "
 
 
 # def build_date(b_date):
