@@ -69,18 +69,3 @@ function getCSVdata() {
       listings.push(listing);
    }
 }
-
-function searchTest() {
-   var stateSearch = "Illinois";
-
-   var foundEntries = Array();
-   //var listing = null;
-
-   //i = 0;
-
-   for (i = 0; i < listings.length; i++) {
-      if (listings[i]["State"] == stateSearch) {
-         foundEntries.push(listings[i]);
-      }
-   }
-}
