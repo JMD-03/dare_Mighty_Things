@@ -2,19 +2,30 @@
 
 
 def general_narrative():
-    return ""
+    return building_name(Bldg_Name) + view(View) + "is located at " + Address + ", " + City + " " + State + " " + Zip + building_area
 
-# def building_name():
-
+def building_name(bldg_name):
+    if bldg_name:
+        return bldg_name + " "
+    else:
+        return "This property "
 
 def view(views):
     if views:
         if views == 'Water':
-            return " is a beautiful water-front property, "
+            return " has a beautiful water-front view, "
         elif views == 'Skyline':
             return " has an incredible skyline, and is "
         else:
             return " is a park-side property, "
+
+def building_area(b_dist, market, submarket):
+    if b_dist:
+        return "in " + b_dist + ". "
+    elif submarket:
+        return "in the " + submarket + " " + market + " area. "
+    else:
+        return "."
 
 def subway(subway_distance):
     if subway_distance != 'More than 1 mile':
