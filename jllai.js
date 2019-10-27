@@ -14,20 +14,23 @@ function general_narrative(listing){
     toReturn += subway(listing["Subway Service"]) ;
     toReturn += parking_ratio(listing["Parking Ratio"], listing["Parking Type"]); 
     toReturn += "The property is ";
-    toReturn +=property_type(listing["Property Type"], listing["Bldg Subtype"], listing["Build Year"], listing["Bldg Class"]); 
+    toReturn += property_type(listing["Property Type"], listing["Bldg Subtype"], listing["Build Year"], listing["Bldg Class"]);
+    toReturn += renovated_date(listing["Renovated Year"]) 
     toReturn += num_stories(listing["Stories"]); 
     toReturn += "with a total size of " ;
     toReturn += listing["Bldg Size"] + " SQ ft.";
-    // toReturn += "The property most recent sold on " ;
-    // toReturn += listing["Sold Date"] ;
-    // toReturn += " for " ;
-    // toReturn += listing["Sales Price"] ;
-    // toReturn += " from "; 
-    // toReturn += listing["Seller"] ;
-    // toReturn += sale_confidence(listing["Sale is Confidential"], listing["Buyer"]);
-    // toReturn += "The property is leased by ";
-    // toReturn += listing["Landlord Leasing Company"] + ".";
-    // toReturn += occ_rate(listing["Occ Rate"]);
+    toReturn += energy_eff(listing["Energy Efficiency"], listing["Bldg Name"]);
+    toReturn += ceiling_height(listing["Ceiling Height Feet"]);
+    toReturn += "The property most recent sold on " ;
+    toReturn += listing["Sold Date"] ;
+    toReturn += " for " ;
+    toReturn += listing["Sales Price"] ;
+    toReturn += " from "; 
+    toReturn += listing["Seller"] ;
+    toReturn += sale_confidence(listing["Sale is Confidential"], listing["Buyer"]);
+    toReturn += "The property is leased by ";
+    toReturn += listing["Landlord Leasing Company"] + ".";
+    toReturn += occ_rate(listing["Occ Rate"]);
     
     return toReturn;
 
@@ -129,12 +132,19 @@ function subway(subway_distance) {
 
 function renovated_date(ren_date){
     if (ren_date >= 2013)
-        return "newly renovated "
+        return "and newly renovated in " + ren_date + ", "
 }
 
-function energy_eff(e_rating){
-    if (e_rating == 'Platinum' || e_rating == 'Gold')
-        return "Building is energy efficient to keep heating and cooling costs down. "}
+function energy_eff(e_rating, bldg_name){
+    if(bldg_name){
+        if (e_rating == 'Platinum' || e_rating == 'Gold'){
+            return bldg_name + " is energy efficient to keep heating and cooling costs down. "
+        }
+    }
+    else{
+        return "This property is energy efficient to keep heating and cooling costs down. "
+    }
+}
 
 function ceiling_height(c_height){
     if (c_height >= 10)
