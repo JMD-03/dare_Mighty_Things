@@ -11,28 +11,32 @@
 <script src="./searchValues.js"></script>
 <script src="./jllai.js"></script>
 
-<body onload="onLoad()" background="./resources/chicagoBackground.jpg">
+<body onload="onLoad()" background="./resources/chicagoBackground.jpg" id="body">
 
     <nav>
         <h1>Find Your Property</h1>
     </nav>
-    <div class="section1">
-        <select id="properties" onchange="generateSearch2()">
-            <option value="" selected disabled hidden>Choose here</option>
-        </select>
-    </div>
-    <div class="section2">
-        <select id="elements">
-            <option value="" selected disabled hidden>Choose here</option>
-        </select>
-    </div>
-    <div class="section3">
-        <button type="button" onclick="searchValues();">Search!</button>
-    </div>
+    <section style="padding-top: 10px;">
+        <div class="section1">
+            <select id="properties" onchange="generateSearch2()">
+                <option value="" selected disabled hidden>Choose here</option>
+            </select>
+        </div>
+        <div class="section2">
+            <select id="elements">
+                <option value="" selected disabled hidden>Choose here</option>
+            </select>
+        </div>
+        <div class="section3">
+            <button type="button" onclick="searchValues();">Search!</button>
+        </div>
+
+    </section>
 
     <div id="foundListings">
-
     </div>
+
+
 
 </body>
 

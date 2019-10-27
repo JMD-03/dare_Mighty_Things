@@ -6,31 +6,50 @@ nav {
 
 h1 {
    color: white;
+   font-size: 48px;
 }
 
 .section1 {
-   width: 50px;
+   width: 50%;
    float: left;
    text-align: center;
-   padding-top: 10px;
-   cursor: pointer;
-   padding-left: 45px;
+   cursor: grab;
+   position: absolute;
 }
 
 .section2 {
-   width: 50px;
+   width: 50%;
+   margin-left: 350px;
    float: left;
    text-align: center;
-   padding-top: 10px;
-   padding-left: 175px;
-   cursor: pointer;
+   cursor: grab;
+   position: absolute;
 }
 
 .section3 {
-   width: 25px;
+   width: 40px;
+   height: 25px;
    float: left;
    text-align: center;
-   padding-top: 10px;
-   padding-left: 75px;
-   cursor: pointer;
+   cursor: grab;
+   position: absolute;
+   margin-left: 1050px;
+}
+
+select {
+   cursor: grab;
+   position: absolute;
+}
+
+.resultDiv {
+   color: white;
+   background-color: rgb(128, 128, 128, .75);
+   padding: 5px, 5px, 5px, 5px;
+}
+
+.resultsText {
+   margin: 25px 25px 25px 25px;
+   padding-top: 12px;
+   padding-bottom: 15px;
+   font-size: 24px;
 }

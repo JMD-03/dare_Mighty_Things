@@ -30,7 +30,24 @@ function searchValues() {
         document.getElementById("foundListings").innerHTML += matchedListing[i] + "\n";
     }
 
-    document.write(narratives[0]);
+
+    //let resultDiv = document.createElement("div");
+    //resultDiv.className = "resultDiv";
+    //resultDiv.id = "result";
+    //document.getElementById("body").appendChild(resultDiv);
+    //document.getElementById("result").innerHTML = narratives[0];
+
+    document.getElementById("body").innerHTML = "<div class=\"resultDiv\"><div class=\"resultsText\">" + narratives[0] + "</div></div>";
+
+    let bbtn = document.createElement("button");
+    bbtn.value = "Back";
+    bbtn.id = "back";
+    bbtn.onclick = function () { location.reload() };
+
+    document.getElementById("body").appendChild(bbtn);
+    document.getElementById("back").innerHTML = "Back";
+
+
     console.log(narratives);
 
 }
