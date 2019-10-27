@@ -1,4 +1,4 @@
-
+import random
 
 
 def general_narrative():
@@ -19,9 +19,11 @@ def building_name(bldg_name):
 def view(views):
     if views:
         if views == 'Water':
-            return " has a beautiful water-front view and is "
+            beautiful_adj = ["brilliant", "gorgeous", "spectacular", "out of this world", "stunning"]
+            return " has a {} water-front view and is ".format(random.choice(beautiful_adj))
         elif views == 'Skyline':
-            return " has an incredible skyline and is "
+            incredible_adj = ["fabulous", "gorgeous", "spectacular", "unreal", "amazing"]
+            return " has an {} skyline and is ".format(random.choice(incredible_adj))
         else:
             return " is a park-side property "
 
