@@ -82,15 +82,19 @@ function building_area(b_park, market, submarket) {
 
 function property_type(prop_type, subtype, b_date, b_class){
     var dt = new Date();
+    b_date = parseInt(b_date);
+    //console.log(dt.getFullYear());
+    //console.log(dt.getYear());
+    //console.log(b_date);
     if (b_date) {
-        if (b_date >= 2015){
+        if (b_date >= 2015 && (dt.getFullYear() > b_date)){
             if (subtype == prop_type){
                 return "a modern " + building_class(b_class) +  " " + prop_type + " built in " + b_date + ", "}
             else{
                 return "a modern " + building_class(b_class) + subtype + prop_type + " built in " + b_date + ", "
             }
         }
-        else if (dt.getYear() < b_date){
+        else if (dt.getFullYear() < b_date){
             if (subtype == prop_type){
                 return "a modern " + building_class(b_class) +  " " + prop_type + " coming in " + b_date + ", "
             }
@@ -208,6 +212,9 @@ function parking_ratio(p_ratio, p_type) {
     if (p_type == 'No Parking') {
         return "There is no parking attached to this property. "
     }
+
+    p_ratio = parseInt(p_ratio);
+
     if (p_ratio >= 2) {
         if (p_type == 'Structured Parking' || p_type == 'Underground Garage' || p_type == 'In-Building Above Grade')
             return "There is plenty of parking availble in a Parking Structure. "
