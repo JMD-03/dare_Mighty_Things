@@ -15,7 +15,6 @@ function general_narrative(){
     toReturn += parking_ratio(listing["Parking Ratio"], listing["Parking Type"]); 
     toReturn += "The property is ";
     toReturn +=property_type(listing["Property Type"], listing["Bldg Subtype"], listing["Build Year"], listing["Bldg Class"]); 
-    toReturn += ", ";
     toReturn += num_stories(listing["Stories"]); 
     toReturn += "with a total size of " ;
     toReturn += listing["Bldg Size"] + " SQ ft.";
@@ -165,7 +164,7 @@ function parking_ratio(p_ratio, p_type){
 
 function num_stories(stories){
     if (stories > 10) {
-        return "standing " + stories + " tall "
+        return "standing " + stories + " stories tall "
     }
 }
 
