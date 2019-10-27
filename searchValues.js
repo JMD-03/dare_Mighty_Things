@@ -13,14 +13,18 @@ function searchValues()
         }
     }
 
+    var narratives = Array();
+
     for(i=0; i < matchedListing.length; i++)
     {
         //Comes from ai code
-        general_narrative(matchedListing[i]);
+        narratives.push(general_narrative(matchedListing[i]));
 
         //for
 
         document.getElementById("foundListings").innerHTML += matchedListing[i] + "\n";
     }
+
+    sessionStorage.setItem("narratives", JSON.stringify(narratives));
 
 }
