@@ -18,7 +18,9 @@ function searchValues()
     for(i=0; i < matchedListing.length; i++)
     {
         //Comes from ai code
-        narratives.push(general_narrative(matchedListing[i]));
+        //narratives.push(general_narrative(matchedListing[i]));
+
+        narratives.push(matchedListing["PropertyID"]);
 
         //for
 
