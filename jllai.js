@@ -230,3 +230,12 @@ function sale_confidence(conf, buyer){
         return ". "
     }
 }
+
+function amenities(amens){
+    if(amens){
+        return "This location includes " + amens.toLowerCase() + " as amenities. "
+    }
+    else{
+        return ""
+    }
+}
