@@ -9,7 +9,7 @@ function general_narrative(){
     toReturn += " " ;
     toReturn += listing["State"] ;
     toReturn +=" "; 
-    toReturn += listing["Zip"];
+    toReturn += listing["Zip"] + " ";
     toReturn += building_area(listing["Business Park"], listing["Market"], listing["Submarket"]); 
     toReturn += subway(listing["Subway Service"]) ;
     toReturn += parking_ratio(listing["Parking Ratio"], listing["Parking Type"]); 
@@ -74,34 +74,34 @@ return "."
 function property_type(prop_type, subtype, b_date, b_class){
     if (b_date) {
         if (b_date >= 2015){
-            if (subtype != 'Office' || subtype != ''){
-                return "a modern " + building_class(b_class) + subtype + " " + prop_type + " built in " + b_date + ", "}
+            if (subtype == prop_type){
+                return "a modern " + building_class(b_class) +  " " + prop_type + " built in " + b_date + ", "}
             else{
-                return "a modern " + building_class(b_class) + prop_type + " built in " + b_date + ", "
+                return "a modern " + building_class(b_class) + subtype + prop_type + " built in " + b_date + ", "
             }
         }
         else{
-            if (subtype != 'Office' || subtype != ''){
-                return "a " + building_class(b_class) + subtype + " " + prop_type + " built in " + b_date + ", "
+            if (subtype == prop_type){
+                return "a " + building_class(b_class) + " " + prop_type + " built in " + b_date + ", "
             }
             else{
-                return "a " + building_class(b_class) + prop_type + " built in " + b_date + ", "
+                return "a " + building_class(b_class) + subtype + prop_type + " built in " + b_date + ", "
             }
         }
     }
     else{
-        if (subtype != 'Office' || subtype != ''){
-            return "a " + building_class(b_class) + subtype + " " + prop_type + ", "
+        if (subtype == prop_type){
+            return "a " + building_class(b_class) + " " + prop_type + ", "
         }
         else{
-            return "an " + building_class(b_class) + prop_type + ", "
+            return "an " + building_class(b_class) + subtype + prop_type + ", "
         }
     }
 }
 
 function building_class(b_class){
     if (b_class) {
-        return "Class " + b_class
+        return "Class " + b_class + " "
     }
 }
 
