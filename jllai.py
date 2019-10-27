@@ -7,7 +7,7 @@ def general_narrative():
         + parking_ratio(Parking_Ratio, Parking_Type) + "The property is " \
         + property_type(Property_Type, Bldg_Subtype, Build_Year, Bldg_Class) + ", " \
         + num_stories(Stories) + "with a total size of " + Bldg_Size + " SQ ft. The property most recent sold on " \
-        
+        + Sold_Date + " for " + Sales_Price + " from " + Seller + sale_confidence(Sale_is_Confidential)
         
 
 def building_name(bldg_name):
@@ -111,6 +111,11 @@ def parking_ratio(p_ratio, p_type):
 def num_stories(stories):
     if stories > 10:
         return "standing " + stories + " tall "
+
+def sale_confidence(conf):
+    if conf == 'No':
+        
+
 
 
 
