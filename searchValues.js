@@ -23,7 +23,7 @@ function searchValues() {
         document.getElementById("foundListings").innerHTML += matchedListing[i] + "\n";
     }
 
-    document.write(narratives);
+    document.write(narratives[0]);
     console.log(narratives);
 
 }
