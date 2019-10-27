@@ -1,7 +1,7 @@
 function general_narrative(){
     var toReturn = "";
-    toReturn += building_name(listing[bldg_name]);
-    toReturn += listing["view"];
+    toReturn += building_name(listing["Bldg Name"]);
+    toReturn += listing["View"];
     toReturn += " located at "; 
     toReturn +=  listing["Address"];
     toReturn += ", " ;
@@ -9,26 +9,26 @@ function general_narrative(){
     toReturn += " " ;
     toReturn += listing["State"] ;
     toReturn +=" "; 
-    toReturn += listing["Zipcode"];
-    toReturn += building_area(listing["Business_Park"], listing["Market"], listing["Submarket"]); 
-    toReturn += subway(listing["Subway_Service"]) ;
-    toReturn += parking_ratio(listing["Parking_Ratio"], listing["Parking_Type"]); 
+    toReturn += listing["Zip"];
+    toReturn += building_area(listing["Business Park"], listing["Market"], listing["Submarket"]); 
+    toReturn += subway(listing["Subway Service"]) ;
+    toReturn += parking_ratio(listing["Parking Ratio"], listing["Parking Type"]); 
     toReturn += "The property is ";
-    toReturn +=property_type(listing["Property_Type"], listing["Bldg_Subtype"], listing["Build_Year, Bldg_Class"]); 
+    toReturn +=property_type(listing["Property Type"], listing["Bldg Subtype"], listing["Build Year"], listing["Bldg Class"]); 
     toReturn += ", ";
     toReturn += num_stories(listing["Stories"]); 
     toReturn += "with a total size of " ;
-    toReturn += listing["Bldg_Size"]; 
-    toReturn += " SQ ft. The property most recent sold on " ;
-    toReturn += listing["Sold_Date"] ;
-    toReturn += " for " ;
-    toReturn += listing["Sales_Price"] ;
-    toReturn += " from "; 
-    toReturn += listing["Seller"] ;
-    toReturn += sale_confidence(listing["Sale_is_Confidential"], listing["Buyer"]);
-    toReturn += "The property is leased by ";
-    toReturn += listing["Landlord_Leasing_Company"] + ".";
-    toReturn += occ_rate(listing["Occ_Rate"]);
+    toReturn += listing["Bldg Size"] + " SQ ft.";
+    // toReturn += "The property most recent sold on " ;
+    // toReturn += listing["Sold Date"] ;
+    // toReturn += " for " ;
+    // toReturn += listing["Sales Price"] ;
+    // toReturn += " from "; 
+    // toReturn += listing["Seller"] ;
+    // toReturn += sale_confidence(listing["Sale is Confidential"], listing["Buyer"]);
+    // toReturn += "The property is leased by ";
+    // toReturn += listing["Landlord Leasing Company"] + ".";
+    // toReturn += occ_rate(listing["Occ Rate"]);
     
 
 }
