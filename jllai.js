@@ -41,8 +41,9 @@ function building_name(bldg_name) {
     if (bldg_name) {
         return bldg_name + " "
     }
-    else
+    else{
         return "This property "
+    }
 
 }
 
@@ -50,14 +51,15 @@ function view(views) {
     if (views) {
         if (views == 'Water') {
             beautiful_adj = ["brilliant", "gorgeous", "spectacular", "out of this world", "stunning"]
-        return " has a {} water-front view and is ".format(random.choice(beautiful_adj))
+            return " has a {} water-front view and is ".format(random.choice(beautiful_adj))
         }
         else if (views == 'Skyline') {
             incredible_adj = ["fabulous", "gorgeous", "spectacular", "unreal", "amazing"]
             return " has an {} skyline and is ".format(random.choice(incredible_adj))
         }
-        else
-        return " is a park-side property "
+        else{
+            return " is a park-side property "
+        }
     }
     
 }
@@ -66,12 +68,12 @@ function building_area(b_park, market, submarket) {
     if (b_park){
         return "in " + b_park + ". "
     }
-
-else if (submarket){
-    return "in the " + submarket + " " + market + " area. "
-}
-    else
-return "."
+    else if (submarket){
+        return "in the " + submarket + " " + market + " area. "
+    }
+    else{
+        return ". "
+    }
 }
 
 function property_type(prop_type, subtype, b_date, b_class){
@@ -115,14 +117,19 @@ function building_class(b_class){
     if (b_class) {
         return "Class " + b_class + " "
     }
+    else{
+        return ""
+    }
 }
 
 
 function subway(subway_distance) {
     if (subway_distance != 'More than 1 mile') {
-        return "Perfect for the daily commuter, with the Subway station located within 1 mile. "}
-    else
+        return "Perfect for the daily commuter, with the Subway station located within 1 mile. "
+    }
+    else{
         return "With the subway more then a mile away, its a great way to get some exercise that you don't get in the office. "
+    }
 }
 //function build_date(b_date):
 //    if b_date >= 2015:
