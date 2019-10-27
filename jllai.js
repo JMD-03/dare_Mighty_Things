@@ -140,23 +140,39 @@ function energy_eff(e_rating, bldg_name){
         if (e_rating == 'Platinum' || e_rating == 'Gold'){
             return bldg_name + " is energy efficient to keep heating and cooling costs down. "
         }
+        else{
+            return ""
+        }
     }
     else{
-        return "This property is energy efficient to keep heating and cooling costs down. "
+        if (e_rating == 'Platinum' || e_rating == 'Gold'){
+            return "This property is energy efficient to keep heating and cooling costs down. "
+        }
+        else{
+            return ""
+        }
     }
 }
 
 function ceiling_height(c_height){
-    if (c_height >= 10)
+    if (c_height >= 10){
         return "This property is graced by soaring ceilings of " + c_height + " feet."
+    }
+    else{
+        return ""
+    }
 }
 
 function tenancy(tenant){
     if (tenant == 'Single-Tenant') {
         return "Enjoy privacy, security, and freedom in this single-tenant building."
     }
-    else if (tenant == 'Multi-Tenant')
+    else if (tenant == 'Multi-Tenant'){
         return "Building houses multiple tenants."
+    }
+    else{
+        return ""
+    }
 }
 
 function occ_rate(rate){
