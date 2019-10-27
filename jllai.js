@@ -72,12 +72,21 @@ return "."
 }
 
 function property_type(prop_type, subtype, b_date, b_class){
+    var dt = new Date();
     if (b_date) {
         if (b_date >= 2015){
             if (subtype == prop_type){
                 return "a modern " + building_class(b_class) +  " " + prop_type + " built in " + b_date + ", "}
             else{
                 return "a modern " + building_class(b_class) + subtype + prop_type + " built in " + b_date + ", "
+            }
+        }
+        else if (dt.getYear() < b_date){
+            if (subtype == prop_type){
+                return "a modern " + building_class(b_class) +  " " + prop_type + " coming in " + b_date + ", "
+            }
+            else{
+                return "a modern " + building_class(b_class) + subtype + prop_type + " coming in " + b_date + ", "
             }
         }
         else{
