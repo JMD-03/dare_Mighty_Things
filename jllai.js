@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 function general_narrative(listing) {
     var toReturn = "";
     toReturn += building_name(listing["Bldg Name"]);
@@ -17,6 +18,27 @@ function general_narrative(listing) {
     toReturn += property_type(listing["Property Type"], listing["Bldg Subtype"], listing["Build Year"], listing["Bldg Class"]);
     toReturn += num_stories(listing["Stories"]);
     toReturn += "with a total size of ";
+=======
+function general_narrative(listing){
+    var toReturn = "";
+    toReturn += building_name(listing["Bldg Name"]);
+    toReturn += listing["View"];
+    toReturn += " located at "; 
+    toReturn +=  listing["Address"];
+    toReturn += ", " ;
+    toReturn += listing["City"] ;
+    toReturn += " " ;
+    toReturn += listing["State"] ;
+    toReturn +=" "; 
+    toReturn += listing["Zip"] + " ";
+    toReturn += building_area(listing["Business Park"], listing["Market"], listing["Submarket"]); 
+    toReturn += subway(listing["Subway Service"]) ;
+    toReturn += parking_ratio(listing["Parking Ratio"], listing["Parking Type"]); 
+    toReturn += "The property is ";
+    toReturn +=property_type(listing["Property Type"], listing["Bldg Subtype"], listing["Build Year"], listing["Bldg Class"]); 
+    toReturn += num_stories(listing["Stories"]); 
+    toReturn += "with a total size of " ;
+>>>>>>> origin/ai
     toReturn += listing["Bldg Size"] + " SQ ft.";
     // toReturn += "The property most recent sold on " ;
     // toReturn += listing["Sold Date"] ;
@@ -28,7 +50,11 @@ function general_narrative(listing) {
     // toReturn += "The property is leased by ";
     // toReturn += listing["Landlord Leasing Company"] + ".";
     // toReturn += occ_rate(listing["Occ Rate"]);
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> origin/ai
     return toReturn;
 
 }
@@ -73,6 +99,7 @@ function building_area(b_park, market, submarket) {
 
 function property_type(prop_type, subtype, b_date, b_class) {
     if (b_date) {
+<<<<<<< HEAD
         if (b_date >= 2015) {
             if (subtype == prop_type) {
                 return "a modern " + building_class(b_class) + " " + prop_type + " built in " + b_date + ", "
@@ -86,15 +113,37 @@ function property_type(prop_type, subtype, b_date, b_class) {
                 return "a " + building_class(b_class) + " " + prop_type + " built in " + b_date + ", "
             }
             else {
+=======
+        if (b_date >= 2015){
+            if (subtype == prop_type){
+                return "a modern " + building_class(b_class) +  " " + prop_type + " built in " + b_date + ", "}
+            else{
+                return "a modern " + building_class(b_class) + subtype + prop_type + " built in " + b_date + ", "
+            }
+        }
+        else{
+            if (subtype == prop_type){
+                return "a " + building_class(b_class) + " " + prop_type + " built in " + b_date + ", "
+            }
+            else{
+>>>>>>> origin/ai
                 return "a " + building_class(b_class) + subtype + prop_type + " built in " + b_date + ", "
             }
         }
     }
+<<<<<<< HEAD
     else {
         if (subtype == prop_type) {
             return "a " + building_class(b_class) + " " + prop_type + ", "
         }
         else {
+=======
+    else{
+        if (subtype == prop_type){
+            return "a " + building_class(b_class) + " " + prop_type + ", "
+        }
+        else{
+>>>>>>> origin/ai
             return "an " + building_class(b_class) + subtype + prop_type + ", "
         }
     }
@@ -171,7 +220,11 @@ function num_stories(stories) {
     if (stories > 10) {
         return "standing " + stories + " stories tall "
     }
+<<<<<<< HEAD
     else {
+=======
+    else{
+>>>>>>> origin/ai
         return ""
     }
 }
@@ -180,7 +233,11 @@ function sale_confidence(conf, buyer) {
     if (conf == 'No') {
         return " to " + buyer
     }
+<<<<<<< HEAD
     else {
+=======
+    else{
+>>>>>>> origin/ai
         return ". "
     }
 }

@@ -1,10 +1,19 @@
-var cols;
-var listings;
+var cols = Array();
+var listings = Array();
+var aval;
 var properityEntries = Object();
+
+
+
+var files = ["PropertyDataSamples.csv", ""];
 
 function getCSVdata() {
 
-   filePath = "PropertyDataSamples.csv"
+   var fileNum = 0;
+   for(fileNum = 0; fileNum < files.length; fileNum++)
+   {
+
+   filePath = files[i];
    var result = null;
    var xmlhttp = new XMLHttpRequest();
    xmlhttp.open("GET", filePath, false);
@@ -14,11 +23,7 @@ function getCSVdata() {
    }
 
    var lines = result.split('\n');
-   cols = lines[0].split(',');
-
-
-
-   listings = Array();
+   cols.push(lines[0].split(','));
 
    var i = 0;
    var j = 0;
@@ -68,4 +73,7 @@ function getCSVdata() {
 
       listings.push(listing);
    }
+
+}
+
 }
