@@ -1,4 +1,4 @@
-function general_narrative(listing) {
+function general_narrative() {
     var toReturn = "";
     toReturn += building_name(listing["Bldg Name"]);
     toReturn += listing["View"];
@@ -9,7 +9,7 @@ function general_narrative(listing) {
     toReturn += " ";
     toReturn += listing["State"];
     toReturn += " ";
-    toReturn += listing["Zip"];
+    toReturn += listing["Zip"] + " ";
     toReturn += building_area(listing["Business Park"], listing["Market"], listing["Submarket"]);
     toReturn += subway(listing["Subway Service"]);
     toReturn += parking_ratio(listing["Parking Ratio"], listing["Parking Type"]);
@@ -28,7 +28,7 @@ function general_narrative(listing) {
     // toReturn += "The property is leased by ";
     // toReturn += listing["Landlord Leasing Company"] + ".";
     // toReturn += occ_rate(listing["Occ Rate"]);
-    return toReturn;
+
 
 }
 
@@ -73,35 +73,35 @@ function building_area(b_park, market, submarket) {
 function property_type(prop_type, subtype, b_date, b_class) {
     if (b_date) {
         if (b_date >= 2015) {
-            if (subtype != 'Office' || subtype != '') {
-                return "a modern " + building_class(b_class) + subtype + " " + prop_type + " built in " + b_date + ", "
+            if (subtype == prop_type) {
+                return "a modern " + building_class(b_class) + " " + prop_type + " built in " + b_date + ", "
             }
             else {
-                return "a modern " + building_class(b_class) + prop_type + " built in " + b_date + ", "
+                return "a modern " + building_class(b_class) + subtype + prop_type + " built in " + b_date + ", "
             }
         }
         else {
-            if (subtype != 'Office' || subtype != '') {
-                return "a " + building_class(b_class) + subtype + " " + prop_type + " built in " + b_date + ", "
+            if (subtype == prop_type) {
+                return "a " + building_class(b_class) + " " + prop_type + " built in " + b_date + ", "
             }
             else {
-                return "a " + building_class(b_class) + prop_type + " built in " + b_date + ", "
+                return "a " + building_class(b_class) + subtype + prop_type + " built in " + b_date + ", "
             }
         }
     }
     else {
-        if (subtype != 'Office' || subtype != '') {
-            return "a " + building_class(b_class) + subtype + " " + prop_type + ", "
+        if (subtype == prop_type) {
+            return "a " + building_class(b_class) + " " + prop_type + ", "
         }
         else {
-            return "an " + building_class(b_class) + prop_type + ", "
+            return "an " + building_class(b_class) + subtype + prop_type + ", "
         }
     }
 }
 
 function building_class(b_class) {
     if (b_class) {
-        return "Class " + b_class
+        return "Class " + b_class + " "
     }
 }
 
@@ -168,7 +168,7 @@ function parking_ratio(p_ratio, p_type) {
 
 function num_stories(stories) {
     if (stories > 10) {
-        return "standing " + stories + " tall "
+        return "standing " + stories + " stories tall "
     }
 }
 
