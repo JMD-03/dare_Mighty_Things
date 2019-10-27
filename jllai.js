@@ -32,6 +32,8 @@ function general_narrative(listing){
     toReturn += "The property is leased by ";
     toReturn += listing["Landlord Leasing Company"] + ".";
     toReturn += occ_rate(listing["Occ Rate"]);
+    // toReturn += availability(listing[]);
+    toReturn += "\n";
     
     return toReturn;
 
@@ -238,5 +240,14 @@ function amenities(amens){
     }
     else{
         return ""
+    }
+}
+
+function availability(is_avail, floor, floor_ft){
+    if(is_avail == 'No'){
+        return "This property is not available at this time. "
+    }
+    else{
+        return "The largest available spaces in the building are on the " + floor + " with " + floor_ft + "SQ ft. "
     }
 }
