@@ -91,7 +91,7 @@ function property_type(prop_type, subtype, b_date, b_class){
             if (subtype == prop_type){
                 return "a modern " + building_class(b_class) +  " " + prop_type + " built in " + b_date + ", "}
             else{
-                return "a modern " + building_class(b_class) + subtype + prop_type + " built in " + b_date + ", "
+                return "a modern " + building_class(b_class) + " " + subtype + " " + prop_type + " built in " + b_date + ", "
             }
         }
         else if (dt.getFullYear() < b_date){
@@ -99,7 +99,7 @@ function property_type(prop_type, subtype, b_date, b_class){
                 return "a modern " + building_class(b_class) +  " " + prop_type + " coming in " + b_date + ", "
             }
             else{
-                return "a modern " + building_class(b_class) + subtype + prop_type + " coming in " + b_date + ", "
+                return "a modern " + building_class(b_class) + " " + subtype + " " + prop_type + " coming in " + b_date + ", "
             }
         }
         else{
@@ -107,7 +107,7 @@ function property_type(prop_type, subtype, b_date, b_class){
                 return "a " + building_class(b_class) + " " + prop_type + " built in " + b_date + ", "
             }
             else{
-                return "a " + building_class(b_class) + subtype + prop_type + " built in " + b_date + ", "
+                return "a " + building_class(b_class) + " " + subtype + " " + prop_type + " built in " + b_date + ", "
             }
         }
     }
