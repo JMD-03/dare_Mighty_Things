@@ -177,6 +177,6 @@ function sale_confidence(conf, buyer){
         return " to " + buyer
     }
     else{
-        retun ". "
+        return ". "
     }
 }
