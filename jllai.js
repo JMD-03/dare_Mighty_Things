@@ -165,8 +165,12 @@ function occ_rate(rate){
     }
 // else if(rate >= 50 and rate < 90):
 //    return ""
-    else if (rate <= 50)
+    else if (rate <= 50){
         return "This building is sparcely occupied at " + rate + ". "
+    }
+    else{
+        return ""
+    }
 }
 
 function parking_ratio(p_ratio, p_type){
