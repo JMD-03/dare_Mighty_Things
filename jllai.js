@@ -32,7 +32,8 @@ function general_narrative(listing){
     toReturn += "The property is leased by ";
     toReturn += listing["Landlord Leasing Company"] + ".";
     toReturn += occ_rate(listing["Occ Rate"]);
-    // toReturn += availability(listing[]);
+    // toReturn += availability(listing["Is Available"], listing["Floors"], listing["Max Available s.f."], listing["Rent Low"]);
+
     toReturn += "\n";
     
     return toReturn;
@@ -243,11 +244,11 @@ function amenities(amens){
     }
 }
 
-function availability(is_avail, floor, floor_ft){
+function availability(is_avail, floor, floor_ft, rent){
     if(is_avail == 'No'){
         return "This property is not available at this time. "
     }
     else{
-        return "The largest available spaces in the building are on the " + floor + " with " + floor_ft + "SQ ft. "
+        return "The largest available spaces in the building are on the " + floor + " with " + floor_ft + "SQ ft. Rent is currently starting at " + rent + " ."
     }
 }
