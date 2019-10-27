@@ -28,6 +28,7 @@ function general_narrative(listing) {
     // toReturn += "The property is leased by ";
     // toReturn += listing["Landlord Leasing Company"] + ".";
     // toReturn += occ_rate(listing["Occ Rate"]);
+
     return toReturn;
 
 }
@@ -170,10 +171,16 @@ function num_stories(stories) {
     if (stories > 10) {
         return "standing " + stories + " stories tall "
     }
+    else {
+        return ""
+    }
 }
 
 function sale_confidence(conf, buyer) {
     if (conf == 'No') {
         return " to " + buyer
+    }
+    else {
+        return ". "
     }
 }
