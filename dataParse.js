@@ -1,11 +1,11 @@
 var cols = Array();
 var listings = Array();
 var aval;
-var properityEntries = Object();
+var properityEntries = Array();
 
 
 
-var files = ["PropertyDataSamples.csv", ""];
+let files = ["PropertyDataSamples.csv", "SalesCompSamples.csv"];
 
 function getCSVdata() {
 
@@ -13,7 +13,7 @@ function getCSVdata() {
    for(fileNum = 0; fileNum < files.length; fileNum++)
    {
 
-   filePath = files[i];
+   filePath = files[fileNum];
    var result = null;
    var xmlhttp = new XMLHttpRequest();
    xmlhttp.open("GET", filePath, false);
@@ -24,6 +24,7 @@ function getCSVdata() {
 
    var lines = result.split('\n');
    cols.push(lines[0].split(','));
+   properityEntries.push(Object());
 
    var i = 0;
    var j = 0;
@@ -57,21 +58,26 @@ function getCSVdata() {
       //var properties = lines[i].split(/([,]["].*[,].*["][,])/);
       //var properites = Regex.Split(lines[i], /[,]["].*[,].*["][,]/, RegexOptions.IgnoreCase);
       var listing = Object();
-      for (j = 0; j < cols.length; j++) {
-         listing[cols[j]] = properties[j];
-         if (properityEntries[cols[j]]) {
-            if (!properityEntries[cols[j]].includes(properties[j])) {
-               properityEntries[cols[j]].push(properties[j]);
+      for (j = 0; j < cols[fileNum].length; j++) {
+         listing[cols[fileNum][j]] = properties[j];
+         if (properityEntries[fileNum][cols[fileNum][j]]) {
+            if (!properityEntries[fileNum][cols[fileNum][j]].includes(properties[j])) {
+               properityEntries[fileNum][cols[fileNum][j]].push(properties[j]);
             }
          }
          else {
-            properityEntries[cols[j]] = Array();
+            properityEntries[fileNum][cols[fileNum][j]] = Array();
 
-            properityEntries[cols[j]].push(properties[j]);
+            properityEntries[fileNum][cols[fileNum][j]].push(properties[j]);
          }
       }
 
-      listings.push(listing);
+      if(!listings[fileNum])
+      {
+         listings.push(Array());
+      }
+
+      listings[fileNum].push(listing);
    }
 
 }
