@@ -4,8 +4,10 @@
 def general_narrative():
     return building_name(Bldg_Name) + view(View) + " located at " + Address + ", " + City \
         + " " + State + " " + Zip + building_area(Business_Park, Market, Submarket) + subway(Subway_Service) \
-        + parking_ratio(Parking_Ratio, Parking_Type) \
-        + "The property is " + property_type(Property_Type, Bldg_Subtype, Build_Year, Bldg_Class) + ", " \
+        + parking_ratio(Parking_Ratio, Parking_Type) + "The property is " \
+        + property_type(Property_Type, Bldg_Subtype, Build_Year, Bldg_Class) + ", " \
+        + num_stories(Stories) + "with a total size of " + Bldg_Size + " SQ ft. The property most recent sold on " \
+        
         
 
 def building_name(bldg_name):
@@ -35,19 +37,19 @@ def property_type(prop_type, subtype, b_date, b_class):
     if b_date:
             if b_date >= 2015:
                 if subtype != 'Office' or subtype != '':
-                    return "a modern " + building_class(b_class) + subtype + " " + prop_type + " built in " + b_date + " "
+                    return "a modern " + building_class(b_class) + subtype + " " + prop_type + " built in " + b_date + ", "
                 else:
-                    return "a modern " + building_class(b_class) + prop_type + " built in " + b_date + " "
+                    return "a modern " + building_class(b_class) + prop_type + " built in " + b_date + ", "
             else:
                 if subtype != 'Office' or subtype != '':
-                    return "a " + building_class(b_class) + subtype + " " + prop_type + " built in " + b_date + " "
+                    return "a " + building_class(b_class) + subtype + " " + prop_type + " built in " + b_date + ", "
                 else:
-                    return "a " + building_class(b_class) + prop_type + " built in " + b_date + " "
+                    return "a " + building_class(b_class) + prop_type + " built in " + b_date + ", "
     else:
         if subtype != 'Office' or subtype != '':
-            return "a " + building_class(b_class) + subtype + " " + prop_type + " "
+            return "a " + building_class(b_class) + subtype + " " + prop_type + ", "
         else:
-            return "an " + building_class(b_class) + prop_type + " "
+            return "an " + building_class(b_class) + prop_type + ", "
 
 def building_class(b_class):
     if b_class:
@@ -104,7 +106,9 @@ def parking_ratio(p_ratio, p_type):
     else:
         return "There is limited parking available. "
 
-    
+def num_stories(stories):
+    if stories > 10:
+        return "standing " + stories + " tall "
 
 
 
