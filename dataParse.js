@@ -42,7 +42,7 @@ function getCSVdata() {
                   //console.log(lines[i][k]);
                   //lines[i][k] = 1;
 
-
+                  /***** Replaces comma with a space */
                   lines[i] = lines[i].substr(0, k) + " " + lines[i].substr(k + 1);
 
                   //console.log(i + " " + k);
@@ -59,6 +59,12 @@ function getCSVdata() {
       //var properites = Regex.Split(lines[i], /[,]["].*[,].*["][,]/, RegexOptions.IgnoreCase);
       var listing = Object();
       for (j = 0; j < cols[fileNum].length; j++) {
+         
+         //Takes out the double quotes that were used by Excel to hide commas
+         properties[j] = properties[j].replace("\"", "");
+         properties[j] = properties[j].replace("\"", ""); //since replace only does the first one and they come in pairs
+         
+         
          listing[cols[fileNum][j]] = properties[j];
          if (properityEntries[fileNum][cols[fileNum][j]]) {
             if (!properityEntries[fileNum][cols[fileNum][j]].includes(properties[j])) {
