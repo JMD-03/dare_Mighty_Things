@@ -131,8 +131,12 @@ function subway(subway_distance) {
 //         return "built in " + b_date
 
 function renovated_date(ren_date){
-    if (ren_date >= 2013)
+    if (ren_date >= 2013){
         return "and newly renovated in " + ren_date + ", "
+    }
+    else{
+        return ""
+    }
 }
 
 function energy_eff(e_rating, bldg_name){
