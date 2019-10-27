@@ -1,0 +1,35 @@
+nav {
+   width: 100%;
+   text-align: center;
+   height: 50px;
+}
+
+h1 {
+   color: white;
+}
+
+.section1 {
+   width: 50px;
+   float: left;
+   text-align: center;
+   padding-top: 10px;
+   cursor: pointer;
+}
+
+.section2 {
+   width: 50px;
+   float: left;
+   text-align: center;
+   padding-top: 10px;
+   padding-left: 175px;
+   cursor: pointer;
+}
+
+.section3 {
+   width: 25px;
+   float: left;
+   text-align: center;
+   padding-top: 10px;
+   padding-left: 75px;
+   cursor: pointer;
+}

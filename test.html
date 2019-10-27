@@ -2,26 +2,30 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="./test.css" rel="stylesheet">
     <title>Property Search</title>
 </head>
-
-
 
 <script src="./dataParse.js"></script>
 <script src="./listValues.js"></script>
 
-<body onload="onLoad()">
+<body onload="onLoad()" background="./resources/chicagoBackground.jpg">
 
-    <div>
-        <select id="properties">
+    <nav>
+        <h1>Find Your Property</h1>
+    </nav>
+    <div class="section1">
+        <select id="properties" onchange="generateSearch2()">
+            <option value="" selected disabled hidden>Choose here</option>
         </select>
     </div>
-    <div>
+    <div class="section2">
         <select id="elements">
+            <option value="" selected disabled hidden>Choose here</option>
         </select>
+    </div>
+    <div class="section3">
+        <button type="button" onclick="alert('Hello world!')">Search!</button>
     </div>
 
 </body>
