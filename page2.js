@@ -5,7 +5,8 @@ function page2onLoad()
     var i = 0;
     for (i = 0; i < narratives.length; i++)
     {
-    document.getElementById("output").innerHTML += narratives[i];
+        document.getElementById("output").innerHTML += narratives[i] + '\n';
+        console.log(narratives[i]);
     }
 
 }

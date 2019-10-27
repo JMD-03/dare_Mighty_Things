@@ -20,7 +20,7 @@ function searchValues()
         //Comes from ai code
         //narratives.push(general_narrative(matchedListing[i]));
 
-        narratives.push(matchedListing["PropertyID"]);
+        narratives.push(i);
 
         //for
 
@@ -28,5 +28,7 @@ function searchValues()
     }
 
     sessionStorage.setItem("narratives", JSON.stringify(narratives));
+
+    window.location.href = "./page2.html";
 
 }
