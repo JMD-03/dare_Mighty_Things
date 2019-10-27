@@ -1,4 +1,4 @@
-function general_narrative() {
+function general_narrative(listing) {
     var toReturn = "";
     toReturn += building_name(listing["Bldg Name"]);
     toReturn += listing["View"];
@@ -28,7 +28,7 @@ function general_narrative() {
     // toReturn += "The property is leased by ";
     // toReturn += listing["Landlord Leasing Company"] + ".";
     // toReturn += occ_rate(listing["Occ Rate"]);
-
+    return toReturn;
 
 }
 
