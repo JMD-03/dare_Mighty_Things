@@ -44,7 +44,7 @@ function searchValues() {
     bbtn.id = "back";
     bbtn.onclick = function () { location.reload() };
 
-    document.getElementById("body").appendChild(bbtn);
+    document.getElementById("resultDiv").appendChild(bbtn);
     document.getElementById("back").innerHTML = "Back";
 
 
