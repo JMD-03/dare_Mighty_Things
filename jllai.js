@@ -14,20 +14,27 @@ function general_narrative(listing){
     toReturn += subway(listing["Subway Service"]) ;
     toReturn += parking_ratio(listing["Parking Ratio"], listing["Parking Type"]); 
     toReturn += "The property is ";
-    toReturn +=property_type(listing["Property Type"], listing["Bldg Subtype"], listing["Build Year"], listing["Bldg Class"]); 
+    toReturn += property_type(listing["Property Type"], listing["Bldg Subtype"], listing["Build Year"], listing["Bldg Class"]);
+    toReturn += renovated_date(listing["Renovated Year"]) 
     toReturn += num_stories(listing["Stories"]); 
     toReturn += "with a total size of " ;
     toReturn += listing["Bldg Size"] + " SQ ft.";
-    // toReturn += "The property most recent sold on " ;
-    // toReturn += listing["Sold Date"] ;
-    // toReturn += " for " ;
-    // toReturn += listing["Sales Price"] ;
-    // toReturn += " from "; 
-    // toReturn += listing["Seller"] ;
-    // toReturn += sale_confidence(listing["Sale is Confidential"], listing["Buyer"]);
-    // toReturn += "The property is leased by ";
-    // toReturn += listing["Landlord Leasing Company"] + ".";
-    // toReturn += occ_rate(listing["Occ Rate"]);
+    toReturn += energy_eff(listing["Energy Efficiency"], listing["Bldg Name"]);
+    toReturn += ceiling_height(listing["Ceiling Height Feet"]);
+    toReturn += amenities(listing["Amenities"]);
+    toReturn += "The property most recent sold on " ;
+    toReturn += listing["Sold Date"] ;
+    toReturn += " for " ;
+    toReturn += listing["Sales Price"] ;
+    toReturn += " from "; 
+    toReturn += listing["Seller"] ;
+    toReturn += sale_confidence(listing["Sale is Confidential"], listing["Buyer"]);
+    toReturn += "The property is leased by ";
+    toReturn += listing["Landlord Leasing Company"] + ".";
+    toReturn += occ_rate(listing["Occ Rate"]);
+    // toReturn += availability(listing["Is Available"], listing["Floors"], listing["Max Available s.f."], listing["Rent Low"]);
+
+    toReturn += "\n";
     
     return toReturn;
 
@@ -38,8 +45,9 @@ function building_name(bldg_name) {
     if (bldg_name) {
         return bldg_name + " "
     }
-    else
+    else{
         return "This property "
+    }
 
 }
 
@@ -53,8 +61,9 @@ function view(views) {
             incredible_adj = ["fabulous", "gorgeous", "spectacular", "unreal", "amazing"]
             return " has an {} skyline and is ".format(random.choice(incredible_adj))
         }
-        else
+        else{
             return " is a park-side property "
+        }
     }
 
 }
@@ -63,21 +72,30 @@ function building_area(b_park, market, submarket) {
     if (b_park) {
         return "in " + b_park + ". "
     }
-
-    else if (submarket) {
+    else if (submarket){
         return "in the " + submarket + " " + market + " area. "
     }
-    else
-        return "."
+    else{
+        return ". "
+    }
 }
 
-function property_type(prop_type, subtype, b_date, b_class) {
+function property_type(prop_type, subtype, b_date, b_class){
+    var dt = new Date();
     if (b_date) {
         if (b_date >= 2015){
             if (subtype == prop_type){
                 return "a modern " + building_class(b_class) +  " " + prop_type + " built in " + b_date + ", "}
             else{
                 return "a modern " + building_class(b_class) + subtype + prop_type + " built in " + b_date + ", "
+            }
+        }
+        else if (dt.getYear() < b_date){
+            if (subtype == prop_type){
+                return "a modern " + building_class(b_class) +  " " + prop_type + " coming in " + b_date + ", "
+            }
+            else{
+                return "a modern " + building_class(b_class) + subtype + prop_type + " coming in " + b_date + ", "
             }
         }
         else{
@@ -103,6 +121,9 @@ function building_class(b_class) {
     if (b_class) {
         return "Class " + b_class + " "
     }
+    else{
+        return ""
+    }
 }
 
 
@@ -110,8 +131,9 @@ function subway(subway_distance) {
     if (subway_distance != 'More than 1 mile') {
         return "Perfect for the daily commuter, with the Subway station located within 1 mile. "
     }
-    else
+    else{
         return "With the subway more then a mile away, its a great way to get some exercise that you don't get in the office. "
+    }
 }
 //function build_date(b_date):
 //    if b_date >= 2015:
@@ -119,37 +141,67 @@ function subway(subway_distance) {
 //    else:
 //         return "built in " + b_date
 
-function renovated_date(ren_date) {
-    if (ren_date >= 2013)
-        return "newly renovated "
+function renovated_date(ren_date){
+    if (ren_date >= 2013){
+        return "and newly renovated in " + ren_date + ", "
+    }
+    else{
+        return ""
+    }
 }
 
-function energy_eff(e_rating) {
-    if (e_rating == 'Platinum' || e_rating == 'Gold')
-        return "Building is energy efficient to keep heating and cooling costs down. "
+function energy_eff(e_rating, bldg_name){
+    if(bldg_name){
+        if (e_rating == 'Platinum' || e_rating == 'Gold'){
+            return bldg_name + " is energy efficient to keep heating and cooling costs down. "
+        }
+        else{
+            return ""
+        }
+    }
+    else{
+        if (e_rating == 'Platinum' || e_rating == 'Gold'){
+            return "This property is energy efficient to keep heating and cooling costs down. "
+        }
+        else{
+            return ""
+        }
+    }
 }
 
-function ceiling_height(c_height) {
-    if (c_height >= 10)
+function ceiling_height(c_height){
+    if (c_height >= 10){
         return "This property is graced by soaring ceilings of " + c_height + " feet."
+    }
+    else{
+        return ""
+    }
 }
 
 function tenancy(tenant) {
     if (tenant == 'Single-Tenant') {
         return "Enjoy privacy, security, and freedom in this single-tenant building."
     }
-    else if (tenant == 'Multi-Tenant')
+    else if (tenant == 'Multi-Tenant'){
         return "Building houses multiple tenants."
+    }
+    else{
+        return ""
+    }
 }
 
 function occ_rate(rate) {
     if (rate >= 90) {
         return "This building is well occupied at " + rate + ". "
     }
-    // else if(rate >= 50 and rate < 90):
-    //    return ""
-    else if (rate <= 50)
+// else if(rate >= 50 and rate < 90):
+//    return ""
+    else if (rate <= 50){
         return "This building is sparcely occupied at " + rate + ". "
+    }
+    else{
+        return ""
+    }
 }
 
 function parking_ratio(p_ratio, p_type) {
@@ -181,5 +233,23 @@ function sale_confidence(conf, buyer) {
     }
     else{
         return ". "
+    }
+}
+
+function amenities(amens){
+    if(amens){
+        return "This location includes " + amens.toLowerCase() + " as amenities. "
+    }
+    else{
+        return ""
+    }
+}
+
+function availability(is_avail, floor, floor_ft, rent){
+    if(is_avail == 'No'){
+        return "This property is not available at this time. "
+    }
+    else{
+        return "The largest available spaces in the building are on the " + floor + " with " + floor_ft + "SQ ft. Rent is currently starting at " + rent + " ."
     }
 }
