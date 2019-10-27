@@ -21,6 +21,7 @@ function general_narrative(listing){
     toReturn += listing["Bldg Size"] + " SQ ft.";
     toReturn += energy_eff(listing["Energy Efficiency"], listing["Bldg Name"]);
     toReturn += ceiling_height(listing["Ceiling Height Feet"]);
+    toReturn += amenities(listing["Amenities"]);
     toReturn += "The property most recent sold on " ;
     toReturn += listing["Sold Date"] ;
     toReturn += " for " ;
